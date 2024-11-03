@@ -227,7 +227,7 @@ void sx126x_baslat(){
 	sx126x_begin(RF_FREQ, DIO2_RF_PIN);
 	SetTxConfig(POWER);
 	SetRxConfig(STP_TM_PRE_OFF,SYM_NUM_TM_0,RXGAIN_BOOST);
-	SetCadPar(CAD_SYM_4,CAD_SF11_PEAK,CAD_DET_MIN,CAD_EXIT_STDBY,5000);
+	SetCadPar(CAD_SYM_4,CAD_SF11_PEAK,CAD_DET_MIN,CAD_EXIT_STDBY,5);
 	SetStdby( STDBY_RC);
 	SetRxContinuous();
 }
@@ -272,7 +272,7 @@ void sx126x_begin(double frequency,dio2Pin_t pinstate){
 	SetIrqPar(IRQ_NONE,IRQ_NONE,IRQ_NONE,IRQ_NONE);	
 	SetRxTxFallBack(RXTX_BACK_RC);	 	
 }
-void modul_IO(){// giriþ çýkýþ ayarlama
+void modul_IO(){// giriÃ¾ Ã§Ã½kÃ½Ã¾ ayarlama
 	SX_DDR|=(1<<RST);
 	SX_DDR&=~(1<<BUSSY);
 	SX_PORT|=(1<<RST);	
@@ -290,18 +290,18 @@ void modul_IRQ(irqPin_t dio1,irqPin_t dio2){
 		PCMSK2|=(1<<dio2);
 	}	
 	/*if (dio1==PORTD2){
-		DDRD&=~(1<<PORTD2);//pd2 giriþ yapýldý
+		DDRD&=~(1<<PORTD2);//pd2 giriÃ¾ yapÃ½ldÃ½
 		//PORTD|=(1<<PORTD2);//pd2 dahili pull-up		
-		EICRA|=(1<<ISC01)|(1<<ISC00);//pd2 yükselen kenar
+		EICRA|=(1<<ISC01)|(1<<ISC00);//pd2 yÃ¼kselen kenar
 		EIMSK|=(1<<INT0);//pd2
 	}
 	if (dio2==PORTD3){
-		DDRD&=~(1<<PORTD3);//pd3 giriþ yapýldý
+		DDRD&=~(1<<PORTD3);//pd3 giriÃ¾ yapÃ½ldÃ½
 		//PORTD|=(1<<PORTD3);//pd3 dahili pull-up		
-		EICRA|=(1<<ISC11)|(1<<ISC10);//pd3 yükselen kenar
+		EICRA|=(1<<ISC11)|(1<<ISC10);//pd3 yÃ¼kselen kenar
 		EIMSK|=(1<<INT1);//pd3
 	}*/
-	sei();	//tüm kesmeler açýldý*/
+	sei();	//tÃ¼m kesmeler aÃ§Ã½ldÃ½*/
 }
 void modul_RST(){//modul reset
 	SX_PORT&=~(1<<RST);
