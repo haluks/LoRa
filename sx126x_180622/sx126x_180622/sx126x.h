@@ -34,8 +34,8 @@
 
 
 
-#define DIO1				PORTD6//portd pinleri seçilecek
-#define DIO2				PORTD6//portd pinleri seçilecek dio2 tx_en baðlý
+#define DIO1				PORTD6//portd pinleri seÃ§ilecek
+#define DIO2				PORTD6//portd pinleri seÃ§ilecek dio2 tx_en baÃ°lÃ½
 #define RX_PIN				PORTD3// rx rf switch
 #define RST					PORTD4
 #define BUSSY				PORTD5
@@ -78,31 +78,31 @@ typedef enum
 #define ACK_OFF			0x00
 #define ACK_STATE		ACK_OFF
 #define ACK				0x06
-#define ACK_WAIT_TIME	20000//ack bekleme ms
-#define ACK_SEND_TIME	4000//ack gonderme ms
-#define TXTIMEOUT		5000//ms
-#define RXTIMEOUT		5000//ms
+#define ACK_WAIT_TIME		20000//ack bekleme ms
+#define ACK_SEND_TIME		4000//ack gonderme ms
+#define TXTIMEOUT		5//s
+#define RXTIMEOUT		5//s
 #define POWER			22//22dbm
-#define RF_FREQ			433.92//433.92//433920000Hz SBT yönetmelik
-#define LORA_PAY_LEN	0xFF// veri paket boyutu max
-#define LORA_PRE_SYM	0x0028// 12 preamble sembol sayýsý
+#define RF_FREQ			433.92//433.92//433920000Hz SBT yÃ¶netmelik
+#define LORA_PAY_LEN		0xFF// veri paket boyutu max
+#define LORA_PRE_SYM		0x0028// 12 preamble sembol sayÃ½sÃ½
 #define LORA_TX			0x00
 #define LORA_RX			0x01
-#define STP_TM_PRE_ON	0x01
-#define STP_TM_PRE_OFF	0x00
-#define SYM_NUM_TM_0	0x00
-#define SYM_NUM_TM_2	0x02//lora sembol sayýsý
-#define SYM_NUM_TM_4	0x04
-#define SYM_NUM_TM_8	0x08
-#define CALIBRATE_ALL	0x7F// tüm kalibrasyonlar açýk
+#define STP_TM_PRE_ON		0x01
+#define STP_TM_PRE_OFF		0x00
+#define SYM_NUM_TM_0		0x00
+#define SYM_NUM_TM_2		0x02//lora sembol sayÃ½sÃ½
+#define SYM_NUM_TM_4		0x04
+#define SYM_NUM_TM_8		0x08
+#define CALIBRATE_ALL		0x7F// tÃ¼m kalibrasyonlar aÃ§Ã½k
 #define RXGAIN_REG		0x08AC//rx gain 
-#define RXGAIN_BOOST	0x96//hassaiyet artar güç tüketim artar
-#define RXGAIN_SAVE		0x94//default gain güç tüketimi azalýr
-#define OCP_REG			0x08E7//pa sonrasý yapýlýr
-#define OCP_MAX			0x38//2,5mA en düþük 60 (0x18) en yüksek 140mA (0x38)
-#define RXTX_BACK_RC	0x20//stdby-rc mode
-#define RXTX_BACK_XOSC	0x30//stdby-xosc mode
-#define PACK_TYP_LORA	0x01// lora mod
+#define RXGAIN_BOOST		0x96//hassaiyet artar gÃ¼Ã§ tÃ¼ketim artar
+#define RXGAIN_SAVE		0x94//default gain gÃ¼Ã§ tÃ¼ketimi azalÃ½r
+#define OCP_REG			0x08E7//pa sonrasÃ½ yapÃ½lÃ½r
+#define OCP_MAX			0x38//2,5mA en dÃ¼Ã¾Ã¼k 60 (0x18) en yÃ¼ksek 140mA (0x38)
+#define RXTX_BACK_RC		0x20//stdby-rc mode
+#define RXTX_BACK_XOSC		0x30//stdby-xosc mode
+#define PACK_TYP_LORA		0x01// lora mod
 #define NOP				0x00
 
 typedef enum {
@@ -110,36 +110,36 @@ typedef enum {
 	SET_STBY			=0x80,//bekleme ayar
 	SET_TX				=0x83,//tx mode
 	SET_RX				=0x82,//rx mode
-	SET_STP_TM_PRE		=0x9F,// aktif olursa preamble algýlandýðýnda timer durdurur
+	SET_STP_TM_PRE			=0x9F,// aktif olursa preamble algÃ½landÃ½Ã°Ã½nda timer durdurur
 	SET_CAD				=0xC5,// cad mode
-	SET_REGULATOR		=0x96,// regulator
+	SET_REGULATOR			=0x96,// regulator
 	SET_CALIB			=0x89,// kalibrasyon
-	SET_IMAGE_CAL		=0x98,// frekans ayarý
-	SET_PA_CON			=0x95,// güç amfi ayar
-	SET_RXTX_BACK		=0x93,//veri hareketi sonrasý mode seçimi
+	SET_IMAGE_CAL			=0x98,// frekans ayarÃ½
+	SET_PA_CON			=0x95,// gÃ¼Ã§ amfi ayar
+	SET_RXTX_BACK			=0x93,//veri hareketi sonrasÃ½ mode seÃ§imi
 	WR_REG				=0x0D,//  opcode
 	RD_REG				=0x1D,//  opcode
 	WR_BUFF				=0x0E,//  opcode
 	RD_BUFF				=0x1E,//  opcode
-	SET_IRQ_PAR			=0x08,// kesme ve pin iþleyiþi
-	GET_IRQ_STAT		=0x12,//kesme durum döndürür 3 nop
-	CLE_IRQ_STAT		=0x02,//kesme bayrak silme
-	SET_DIO2_RF			=0x9D,// rf switch dio 2 ye baðlý halde
-	SET_DIO3_TXCO		=0x97,// tcxo dio 3 e baðlý halde
-	SET_RF_FREQ			=0x86,// RF frekans ayarý rf frq= (RF_FREQ*((uint32_t)(1<<25))/32.0)
-	SET_PACK_TYP		=0x8A,// paket tipi stdby_rc moodda ilk yapýlacak
-	GET_PACK_TYP		=0x11,//paket tipi döndürür 2 nop	
+	SET_IRQ_PAR			=0x08,// kesme ve pin iÃ¾leyiÃ¾i
+	GET_IRQ_STAT			=0x12,//kesme durum dÃ¶ndÃ¼rÃ¼r 3 nop
+	CLE_IRQ_STAT			=0x02,//kesme bayrak silme
+	SET_DIO2_RF			=0x9D,// rf switch dio 2 ye baÃ°lÃ½ halde
+	SET_DIO3_TXCO			=0x97,// tcxo dio 3 e baÃ°lÃ½ halde
+	SET_RF_FREQ			=0x86,// RF frekans ayarÃ½ rf frq= (RF_FREQ*((uint32_t)(1<<25))/32.0)
+	SET_PACK_TYP			=0x8A,// paket tipi stdby_rc moodda ilk yapÃ½lacak
+	GET_PACK_TYP			=0x11,//paket tipi dÃ¶ndÃ¼rÃ¼r 2 nop	
 	SET_TX_PAR			=0x8E,// tx parametreleri
-	SET_MOD_PAR			=0x8B,// modülasyon parametre
-	SET_PACK_PAR		=0x8C,// paket parametre
-	SET_CAD_PAR			=0x88,//cad ayarlarý	
-	SET_BUFF_ADD		=0x8F,//buffer adres
-	SET_SYM_NUM_TM		=0xA0,//timer kapatmak için gereken sembol numarasý
+	SET_MOD_PAR			=0x8B,// modÃ¼lasyon parametre
+	SET_PACK_PAR			=0x8C,// paket parametre
+	SET_CAD_PAR			=0x88,//cad ayarlarÃ½	
+	SET_BUFF_ADD			=0x8F,//buffer adres
+	SET_SYM_NUM_TM			=0xA0,//timer kapatmak iÃ§in gereken sembol numarasÃ½
 	GET_STAT			=0xC0,// durum 1 nop
 	CLE_ERROR			=0x07,// hata silme
-	GET_BUFF_STAT		=0x13,//status, veri boyutu ve rx pointer 3 nop	
-	GET_PACK_STAT		=0x14,//paket durumu döndürür 4 nop
-	GET_RSSI			=0x15,//sinyal gücü 2 nop
+	GET_BUFF_STAT			=0x13,//status, veri boyutu ve rx pointer 3 nop	
+	GET_PACK_STAT			=0x14,//paket durumu dÃ¶ndÃ¼rÃ¼r 4 nop
+	GET_RSSI			=0x15,//sinyal gÃ¼cÃ¼ 2 nop
 	
 }sxCmd_t;
 
@@ -157,8 +157,8 @@ typedef enum {
 typedef enum {
 	ACK_NOT_WAIT			=0x00,// ack bekleme
 	ACK_WAIT				=0x01,// ack bekle	
-	ACK_SEND				=0x02,// ack gönder
-	ACK_SENDING				=0x03,// ack gönderiliyor
+	ACK_SEND				=0x02,// ack gÃ¶nder
+	ACK_SENDING				=0x03,// ack gÃ¶nderiliyor
 }ackStatus_t;
 typedef enum {
 	TX_AGAIN_ON				=0x00,// Tx tekrarla
@@ -166,18 +166,18 @@ typedef enum {
 }txStatus_t;
 
 typedef enum {
-	MSG_DONE				=0x00,// mesaj tamamlandý
-	MSG_RCV					=0x01,// mesaj alýndý
-	/*MSG_RDY					=0x02,// mesaj hazýr	
+	MSG_DONE				=0x00,// mesaj tamamlandÃ½
+	MSG_RCV					=0x01,// mesaj alÃ½ndÃ½
+	/*MSG_RDY					=0x02,// mesaj hazÃ½r	
 	MSG_READ				=0x03,// mesaj okundu	*/
 }rxStatus_t;
 
 typedef enum {
-	STAT_CMD_DATA_HOST	=0x02,// veri alýndý hazýr
-	STAT_CMD_TIMEOUT	=0x03,// komut zaman aþýmý
-	STAT_CMD_ERROR		=0x04,// hatalý iþlem
-	STAT_CMD_FAIL		=0x05,//iþlem yürütülemedi
-	STAT_CMD_TX_DONE	=0x06,//veri gönderildi
+	STAT_CMD_DATA_HOST	=0x02,// veri alÃ½ndÃ½ hazÃ½r
+	STAT_CMD_TIMEOUT	=0x03,// komut zaman aÃ¾Ã½mÃ½
+	STAT_CMD_ERROR		=0x04,// hatalÃ½ iÃ¾lem
+	STAT_CMD_FAIL		=0x05,//iÃ¾lem yÃ¼rÃ¼tÃ¼lemedi
+	STAT_CMD_TX_DONE	=0x06,//veri gÃ¶nderildi
 }cmdStatus_t;
 typedef enum {
 	MODE_SLEEP			=0x00,// uyku mode
@@ -187,7 +187,7 @@ typedef enum {
 	MODE_FS				=0x04,//fs mode
 	MODE_RX				=0x05,//rx mode
 	MODE_TX				=0x06,//tx mode
-	MODE_RX_CON			=0x07,//rx sürekli
+	MODE_RX_CON			=0x07,//rx sÃ¼rekli
 }chipModeStatus_t;
 
 typedef union {
@@ -205,15 +205,15 @@ typedef enum {
 	IRQ_NONE			=0x0000,//kesme yok
 	IRQ_TX_DONE			=0x0001,//tx bitti
 	IRQ_RX_DONE			=0x0002,//rx bitti
-	IRQ_PRE_DET			=0x0004,//preamble saptandý
-	IRQ_SYN_WORD		=0x0008,//fsk modülasyon
-	IRQ_HEAD_DET		=0x0010,//header saptandý
+	IRQ_PRE_DET			=0x0004,//preamble saptandÃ½
+	IRQ_SYN_WORD		=0x0008,//fsk modÃ¼lasyon
+	IRQ_HEAD_DET		=0x0010,//header saptandÃ½
 	IRQ_HEAD_ERR		=0x0020,//header hata
 	IRQ_CRC_ERR			=0x0040,//crc hata
 	IRQ_CAD_DONE		=0x0080,//cad bitti
-	IRQ_CAD_DET			=0x0100,//cad saptandý
-	IRQ_TIMEOUT			=0x0200,// zaman aþýmý
-	IRQ_ALL				=0xFFFF,// tüm kesmeler
+	IRQ_CAD_DET			=0x0100,//cad saptandÃ½
+	IRQ_TIMEOUT			=0x0200,// zaman aÃ¾Ã½mÃ½
+	IRQ_ALL				=0xFFFF,// tÃ¼m kesmeler
 }irq_mask_t;
 
 typedef enum {
@@ -231,10 +231,10 @@ typedef enum {
 #define CAD_SYM_2			0x01//2 sembol
 #define CAD_SYM_4			0x02//4 sembol uygun
 #define CAD_SYM_8			0x08//4 sembol uygun
-#define CAD_DET_MIN			10//bu deðeri deðiþtirmeye gerek yok
-#define CAD_EXIT_RX			0x01//cad sonrasý rx// cad_rx
-#define CAD_EXIT_STDBY		0x00//cad sonrasý stdby// cad_only
-// CAD timeout deðeri msaniye cinsinden girilecek.
+#define CAD_DET_MIN			10//bu deÃ°eri deÃ°iÃ¾tirmeye gerek yok
+#define CAD_EXIT_RX			0x01//cad sonrasÃ½ rx// cad_rx
+#define CAD_EXIT_STDBY		0x00//cad sonrasÃ½ stdby// cad_only
+// CAD timeout deÃ°eri msaniye cinsinden girilecek.
 // CAD timeout en fazla 262 saniye olabilir.
 
 typedef enum {// bw 125kHz, cr 4/5 cad sembol 4 ve Sf degerine gore en iyi ayarlar
@@ -248,16 +248,16 @@ typedef enum {// bw 125kHz, cr 4/5 cad sembol 4 ve Sf degerine gore en iyi ayarl
 
 /// lora packet parametreleri
 typedef enum{
-	PACK_PAR3_HEAD_EXP	=0x00,// deðiþken boyut baþlýk açýk
-	PACK_PAR3_HEAD_IMP	=0x00,// sabit boyut  baþlýk yok
+	PACK_PAR3_HEAD_EXP	=0x00,// deÃ°iÃ¾ken boyut baÃ¾lÃ½k aÃ§Ã½k
+	PACK_PAR3_HEAD_IMP	=0x00,// sabit boyut  baÃ¾lÃ½k yok
 }PackPar3Headtype_t;
 typedef enum{
-	PACK_PAR5_CRC_ON	=0x01,//crc açýk
-	PACK_PAR5_CRC_OFF	=0x00,//crc kapalý
+	PACK_PAR5_CRC_ON	=0x01,//crc aÃ§Ã½k
+	PACK_PAR5_CRC_OFF	=0x00,//crc kapalÃ½
 }PackPar5Crc_t;
 typedef enum{
-	PACK_PAR6_IQ_STD	=0x00,// standart ýq
-	PACK_PAR6_IQ_INV	=0x01,// invert ýq
+	PACK_PAR6_IQ_STD	=0x00,// standart Ã½q
+	PACK_PAR6_IQ_INV	=0x01,// invert Ã½q
 }PackPar6Iq_t;
 typedef struct{
 	uint16_t				lorapresymb;//param1-param2
@@ -299,7 +299,7 @@ typedef enum {
 
 typedef enum {//lora parametreleri
 	MOD_PAR4_LDR_ON		=0x01,
-	MOD_PAR4_LDR_OFF	=0x00,//ldro kapalý
+	MOD_PAR4_LDR_OFF	=0x00,//ldro kapalÃ½
 }ModPar4LDR_t;
 typedef struct{
 	ModPar1SF_t sprfact;
