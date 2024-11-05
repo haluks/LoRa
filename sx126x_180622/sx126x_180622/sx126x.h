@@ -80,8 +80,8 @@ typedef enum
 #define ACK				0x06
 #define ACK_WAIT_TIME		20000//ack bekleme ms
 #define ACK_SEND_TIME		4000//ack gonderme ms
-#define TXTIMEOUT		5//s
-#define RXTIMEOUT		5//s
+#define TXTIMEOUT		500//ms
+#define RXTIMEOUT		500//ms
 #define POWER			22//22dbm
 #define RF_FREQ			433.92//433.92//433920000Hz SBT yönetmelik
 #define LORA_PAY_LEN		0xFF// veri paket boyutu max
